@@ -1,4 +1,4 @@
-# OpenapiClient::MetadataServerErrorResponse
+# TritonInferenceClient::MetadataServerErrorResponse
 
 ## Properties
 

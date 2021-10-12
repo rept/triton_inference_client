@@ -121,8 +121,8 @@ describe TritonInferenceClient::ApiClient do
   describe "#object_to_hash" do
     it 'ignores nils and includes empty arrays' do
       # uncomment below to test object_to_hash for model
-      # api_client = OpenapiClient::ApiClient.new
-      # _model = OpenapiClient::ModelName.new
+      # api_client = TritonInferenceClient::ApiClient.new
+      # _model = TritonInferenceClient::ModelName.new
       # update the model attribute below
       # _model.id = 1
       # update the expected value (hash) below

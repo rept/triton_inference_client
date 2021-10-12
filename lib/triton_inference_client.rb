@@ -35,7 +35,7 @@ require 'triton_inference_client/api/default_api'
 module TritonInferenceClient
   class << self
     # Customize default settings for the SDK using block.
-    #   OpenapiClient.configure do |config|
+    #   TritonInferenceClient.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

@@ -1,4 +1,4 @@
-# OpenapiClient::MetadataTensor
+# TritonInferenceClient::MetadataTensor
 
 ## Properties
 

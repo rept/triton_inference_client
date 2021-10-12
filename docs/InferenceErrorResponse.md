@@ -1,4 +1,4 @@
-# OpenapiClient::InferenceErrorResponse
+# TritonInferenceClient::InferenceErrorResponse
 
 ## Properties
 

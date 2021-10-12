@@ -1,4 +1,4 @@
-# OpenapiClient::RequestInput
+# TritonInferenceClient::RequestInput
 
 ## Properties
 

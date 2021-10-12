@@ -19,7 +19,7 @@ describe TritonInferenceClient::Configuration do
     # uncomment below to setup host and base_path
     # require 'URI'
     # uri = URI.parse("http://localhost")
-    # OpenapiClient.configure do |c|
+    # TritonInferenceClient.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
     # end
