@@ -1,6 +1,6 @@
 ### Install from Git
 
-    gem 'openapi_client', :git => 'https://github.com/rept/triton_inference_client.git'
+    gem 'triton_inference_client', :git => 'https://github.com/rept/triton_inference_client.git'
 
 ## Getting Started
 
@@ -8,15 +8,15 @@ Please follow the [installation](#installation) procedure and then run the follo
 
 ```ruby
 # Load the gem
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 
 begin
   #Server Metadata
   result = api_instance.get_v2
   p result
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Exception when calling DefaultApi->get_v2: #{e}"
 end
 

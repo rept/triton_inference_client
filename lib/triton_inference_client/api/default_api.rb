@@ -12,7 +12,7 @@ OpenAPI Generator version: 5.2.1
 
 require 'cgi'
 
-module OpenapiClient
+module TritonInferenceClient
   class DefaultApi
     attr_accessor :api_client
 

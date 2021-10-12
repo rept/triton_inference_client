@@ -12,9 +12,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'triton_inference_client'
 
-instance = OpenapiClient::InferenceRequest.new(
+instance = TritonInferenceClient::InferenceRequest.new(
   id: null,
   parameters: null,
   inputs: null,

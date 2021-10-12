@@ -13,9 +13,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'triton_inference_client'
 
-instance = OpenapiClient::MetadataModelResponse.new(
+instance = TritonInferenceClient::MetadataModelResponse.new(
   name: null,
   versions: null,
   platform: null,

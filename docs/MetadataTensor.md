@@ -11,9 +11,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'triton_inference_client'
 
-instance = OpenapiClient::MetadataTensor.new(
+instance = TritonInferenceClient::MetadataTensor.new(
   name: null,
   datatype: null,
   shape: null

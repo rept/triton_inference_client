@@ -24,15 +24,15 @@ The server metadata endpoint provides information about the server. A server met
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 
 begin
   # Server Metadata
   result = api_instance.get_v2
   p result
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2: #{e}"
 end
 ```
@@ -50,7 +50,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MetadataServerResponse>
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_with_http_info: #{e}"
 end
 ```
@@ -85,14 +85,14 @@ The “server live” API indicates if the inference server is able to receive a
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 
 begin
   # Server Live
   api_instance.get_v2_health_live
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_health_live: #{e}"
 end
 ```
@@ -110,7 +110,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_health_live_with_http_info: #{e}"
 end
 ```
@@ -145,14 +145,14 @@ The “server ready” health API indicates if all the models are ready for infe
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 
 begin
   # Server Ready
   api_instance.get_v2_health_ready
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_health_ready: #{e}"
 end
 ```
@@ -170,7 +170,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_health_ready_with_http_info: #{e}"
 end
 ```
@@ -205,9 +205,9 @@ The per-model metadata endpoint provides information about a model. A model meta
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 model_name = 'model_name_example' # String | 
 model_version = 'model_version_example' # String | 
 
@@ -215,7 +215,7 @@ begin
   # Model Metadata
   result = api_instance.get_v2_models_model_name_versions_model_version(model_name, model_version)
   p result
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_models_model_name_versions_model_version: #{e}"
 end
 ```
@@ -233,7 +233,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MetadataModelResponse>
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_models_model_name_versions_model_version_with_http_info: #{e}"
 end
 ```
@@ -271,16 +271,16 @@ The “model ready” health API indicates if a specific model is ready for infe
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 model_name = 'model_name_example' # String | 
 model_version = 'model_version_example' # String | 
 
 begin
   # Model Ready
   api_instance.get_v2_models_model_name_versions_model_version_ready(model_name, model_version)
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_models_model_name_versions_model_version_ready: #{e}"
 end
 ```
@@ -298,7 +298,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->get_v2_models_model_name_versions_model_version_ready_with_http_info: #{e}"
 end
 ```
@@ -336,20 +336,20 @@ An inference request is made with an HTTP POST to an inference endpoint. In the 
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'triton_inference_client'
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = TritonInferenceClient::DefaultApi.new
 model_name = 'model_name_example' # String | 
 model_version = 'model_version_example' # String | 
 opts = {
-  inference_request: OpenapiClient::InferenceRequest.new({inputs: [OpenapiClient::RequestInput.new({name: 'name_example', shape: [37], datatype: 'datatype_example', data: [TODO]})]}) # InferenceRequest | 
+  inference_request: TritonInferenceClient::InferenceRequest.new({inputs: [TritonInferenceClient::RequestInput.new({name: 'name_example', shape: [37], datatype: 'datatype_example', data: [TODO]})]}) # InferenceRequest | 
 }
 
 begin
   # Inference
   result = api_instance.post_v2_models_modelname_versions_modelversion_infer(model_name, model_version, opts)
   p result
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->post_v2_models_modelname_versions_modelversion_infer: #{e}"
 end
 ```
@@ -367,7 +367,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <InferenceResponse>
-rescue OpenapiClient::ApiError => e
+rescue TritonInferenceClient::ApiError => e
   puts "Error when calling DefaultApi->post_v2_models_modelname_versions_modelversion_infer_with_http_info: #{e}"
 end
 ```

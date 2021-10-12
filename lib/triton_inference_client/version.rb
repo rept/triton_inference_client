@@ -10,6 +10,6 @@ OpenAPI Generator version: 5.2.1
 
 =end
 
-module OpenapiClient
+module TritonInferenceClient
   VERSION = '1.0.0'
 end

@@ -13,26 +13,14 @@ OpenAPI Generator version: 5.2.1
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class InferenceResponse
-    attr_accessor :model_name
-
-    attr_accessor :model_version
-
-    attr_accessor :id
-
-    attr_accessor :parameters
-
-    attr_accessor :outputs
+module TritonInferenceClient
+  class InferenceErrorResponse
+    attr_accessor :error
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'model_name' => :'model_name',
-        :'model_version' => :'model_version',
-        :'id' => :'id',
-        :'parameters' => :'parameters',
-        :'outputs' => :'outputs'
+        :'error' => :'error'
       }
     end
 
@@ -44,11 +32,7 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'model_name' => :'String',
-        :'model_version' => :'String',
-        :'id' => :'String',
-        :'parameters' => :'Object',
-        :'outputs' => :'Array<ResponseOutput>'
+        :'error' => :'String'
       }
     end
 
@@ -62,37 +46,19 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::InferenceResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::InferenceErrorResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::InferenceResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::InferenceErrorResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'model_name')
-        self.model_name = attributes[:'model_name']
-      end
-
-      if attributes.key?(:'model_version')
-        self.model_version = attributes[:'model_version']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'parameters')
-        self.parameters = attributes[:'parameters']
-      end
-
-      if attributes.key?(:'outputs')
-        if (value = attributes[:'outputs']).is_a?(Array)
-          self.outputs = value
-        end
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
     end
 
@@ -100,22 +66,12 @@ module OpenapiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @model_name.nil?
-        invalid_properties.push('invalid value for "model_name", model_name cannot be nil.')
-      end
-
-      if @outputs.nil?
-        invalid_properties.push('invalid value for "outputs", outputs cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @model_name.nil?
-      return false if @outputs.nil?
       true
     end
 
@@ -124,11 +80,7 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          model_name == o.model_name &&
-          model_version == o.model_version &&
-          id == o.id &&
-          parameters == o.parameters &&
-          outputs == o.outputs
+          error == o.error
     end
 
     # @see the `==` method
@@ -140,7 +92,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [model_name, model_version, id, parameters, outputs].hash
+      [error].hash
     end
 
     # Builds the object from hash
@@ -210,7 +162,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = TritonInferenceClient.const_get(type)
         klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

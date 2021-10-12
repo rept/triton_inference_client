@@ -9,9 +9,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'triton_inference_client'
 
-instance = OpenapiClient::InferenceErrorResponse.new(
+instance = TritonInferenceClient::InferenceErrorResponse.new(
   error: null
 )
 ```

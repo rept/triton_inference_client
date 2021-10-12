@@ -12,8 +12,8 @@ OpenAPI Generator version: 5.2.1
 
 require 'spec_helper'
 
-describe OpenapiClient::Configuration do
-  let(:config) { OpenapiClient::Configuration.default }
+describe TritonInferenceClient::Configuration do
+  let(:config) { TritonInferenceClient::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path

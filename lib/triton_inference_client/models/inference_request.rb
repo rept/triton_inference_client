@@ -13,26 +13,23 @@ OpenAPI Generator version: 5.2.1
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class ResponseOutput
-    attr_accessor :name
-
-    attr_accessor :shape
-
-    attr_accessor :datatype
+module TritonInferenceClient
+  class InferenceRequest
+    attr_accessor :id
 
     attr_accessor :parameters
 
-    attr_accessor :data
+    attr_accessor :inputs
+
+    attr_accessor :outputs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'shape' => :'shape',
-        :'datatype' => :'datatype',
+        :'id' => :'id',
         :'parameters' => :'parameters',
-        :'data' => :'data'
+        :'inputs' => :'inputs',
+        :'outputs' => :'outputs'
       }
     end
 
@@ -44,11 +41,10 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'shape' => :'Array<Integer>',
-        :'datatype' => :'String',
+        :'id' => :'String',
         :'parameters' => :'Object',
-        :'data' => :'Array<AnyOfarraynumberstringboolean>'
+        :'inputs' => :'Array<RequestInput>',
+        :'outputs' => :'Array<RequestOutput>'
       }
     end
 
@@ -62,38 +58,34 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::ResponseOutput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::InferenceRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::ResponseOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::InferenceRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'shape')
-        if (value = attributes[:'shape']).is_a?(Array)
-          self.shape = value
-        end
-      end
-
-      if attributes.key?(:'datatype')
-        self.datatype = attributes[:'datatype']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'parameters')
         self.parameters = attributes[:'parameters']
       end
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
+      if attributes.key?(:'inputs')
+        if (value = attributes[:'inputs']).is_a?(Array)
+          self.inputs = value
+        end
+      end
+
+      if attributes.key?(:'outputs')
+        if (value = attributes[:'outputs']).is_a?(Array)
+          self.outputs = value
         end
       end
     end
@@ -102,20 +94,8 @@ module OpenapiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @shape.nil?
-        invalid_properties.push('invalid value for "shape", shape cannot be nil.')
-      end
-
-      if @datatype.nil?
-        invalid_properties.push('invalid value for "datatype", datatype cannot be nil.')
-      end
-
-      if @data.nil?
-        invalid_properties.push('invalid value for "data", data cannot be nil.')
+      if @inputs.nil?
+        invalid_properties.push('invalid value for "inputs", inputs cannot be nil.')
       end
 
       invalid_properties
@@ -124,10 +104,7 @@ module OpenapiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if @shape.nil?
-      return false if @datatype.nil?
-      return false if @data.nil?
+      return false if @inputs.nil?
       true
     end
 
@@ -136,11 +113,10 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          shape == o.shape &&
-          datatype == o.datatype &&
+          id == o.id &&
           parameters == o.parameters &&
-          data == o.data
+          inputs == o.inputs &&
+          outputs == o.outputs
     end
 
     # @see the `==` method
@@ -152,7 +128,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, shape, datatype, parameters, data].hash
+      [id, parameters, inputs, outputs].hash
     end
 
     # Builds the object from hash
@@ -222,7 +198,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = TritonInferenceClient.const_get(type)
         klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

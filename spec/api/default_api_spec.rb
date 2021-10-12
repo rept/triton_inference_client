@@ -19,7 +19,7 @@ require 'json'
 describe 'DefaultApi' do
   before do
     # run before each test
-    @api_instance = OpenapiClient::DefaultApi.new
+    @api_instance = TritonInferenceClient::DefaultApi.new
   end
 
   after do
@@ -28,7 +28,7 @@ describe 'DefaultApi' do
 
   describe 'test an instance of DefaultApi' do
     it 'should create an instance of DefaultApi' do
-      expect(@api_instance).to be_instance_of(OpenapiClient::DefaultApi)
+      expect(@api_instance).to be_instance_of(TritonInferenceClient::DefaultApi)
     end
   end
 

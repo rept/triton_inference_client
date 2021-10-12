@@ -13,11 +13,11 @@ OpenAPI Generator version: 5.2.1
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "openapi_client/version"
+require "triton_inference_client/version"
 
 Gem::Specification.new do |s|
   s.name        = "triton_inference_client"
-  s.version     = OpenapiClient::VERSION
+  s.version     = TritonInferenceClient::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Stijn Verrept"]
   s.email       = [""]

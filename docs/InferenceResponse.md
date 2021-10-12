@@ -13,9 +13,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'triton_inference_client'
 
-instance = OpenapiClient::InferenceResponse.new(
+instance = TritonInferenceClient::InferenceResponse.new(
   model_name: null,
   model_version: null,
   id: null,

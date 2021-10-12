@@ -13,17 +13,26 @@ OpenAPI Generator version: 5.2.1
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class RequestOutput
+module TritonInferenceClient
+  class ResponseOutput
     attr_accessor :name
 
+    attr_accessor :shape
+
+    attr_accessor :datatype
+
     attr_accessor :parameters
+
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'parameters' => :'parameters'
+        :'shape' => :'shape',
+        :'datatype' => :'datatype',
+        :'parameters' => :'parameters',
+        :'data' => :'data'
       }
     end
 
@@ -36,7 +45,10 @@ module OpenapiClient
     def self.openapi_types
       {
         :'name' => :'String',
-        :'parameters' => :'Object'
+        :'shape' => :'Array<Integer>',
+        :'datatype' => :'String',
+        :'parameters' => :'Object',
+        :'data' => :'Array<AnyOfarraynumberstringboolean>'
       }
     end
 
@@ -50,13 +62,13 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::RequestOutput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::ResponseOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::RequestOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::ResponseOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -65,8 +77,24 @@ module OpenapiClient
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'shape')
+        if (value = attributes[:'shape']).is_a?(Array)
+          self.shape = value
+        end
+      end
+
+      if attributes.key?(:'datatype')
+        self.datatype = attributes[:'datatype']
+      end
+
       if attributes.key?(:'parameters')
         self.parameters = attributes[:'parameters']
+      end
+
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
       end
     end
 
@@ -78,6 +106,18 @@ module OpenapiClient
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @shape.nil?
+        invalid_properties.push('invalid value for "shape", shape cannot be nil.')
+      end
+
+      if @datatype.nil?
+        invalid_properties.push('invalid value for "datatype", datatype cannot be nil.')
+      end
+
+      if @data.nil?
+        invalid_properties.push('invalid value for "data", data cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -85,6 +125,9 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       return false if @name.nil?
+      return false if @shape.nil?
+      return false if @datatype.nil?
+      return false if @data.nil?
       true
     end
 
@@ -94,7 +137,10 @@ module OpenapiClient
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          parameters == o.parameters
+          shape == o.shape &&
+          datatype == o.datatype &&
+          parameters == o.parameters &&
+          data == o.data
     end
 
     # @see the `==` method
@@ -106,7 +152,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, parameters].hash
+      [name, shape, datatype, parameters, data].hash
     end
 
     # Builds the object from hash
@@ -176,7 +222,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = TritonInferenceClient.const_get(type)
         klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end
